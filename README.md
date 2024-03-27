@@ -1,5 +1,6 @@
 # fringe2mintpy 
 
+
 ## introduction 
 fringe (fine resolution insar using gerenalized eigenvector) is developed by NASA JPL to do the PSDS estimation. 
 https://github.com/isce-framework/fringe
@@ -10,7 +11,7 @@ Mintpy is a small baselines timesereis code developed by Yunjun Zhang at Miami U
 https://github.com/insarlab/MintPy
 
 
-contact info: timjunyanchen@gmail.com.
+
 
 ## Step by step
 ### data preparation 
@@ -31,3 +32,5 @@ Running `generateIgram.py`
 Three run files, `run_geneateIgram.sh`, `run_estCoherence.sh` and `run_unwrap.sh` is created, and run them respectively.
 
 ### mintpy 
+
+**my contact info: timjunyanchen@gmail.com**

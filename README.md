@@ -32,5 +32,9 @@ Running `generateIgram.py`
 Three run files, `run_geneateIgram.sh`, `run_estCoherence.sh` and `run_unwrap.sh` is created, and run them respectively.
 
 ### mintpy 
+assign the path of unwrap image, coherence, connect component to the path we just genreate in smallbaselineApp.cfg.
+Run `smallbaselineApp.py` 
 
-**my contact info: timjunyanchen@gmail.com**
+
+
+**my contact: timjunyanchen@gmail.com**

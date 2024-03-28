@@ -24,19 +24,35 @@ https://github.com/isce-framework/fringe/blob/main/docs/workflows.md
 
 ### integratePS
 In fringe workflow, instead of running script in the original repo, I modified the script to export SLC stack. 
-`./integratePS.py -s coreg_stack/slcs_base.vrt -d adjusted_wrapped_DS/ -t Sequential/Datum_connection/EVD/tcorr.bin -p ampDispersion/ps_pixels -o PS_DS --stamps`  
+```bash
+./integratePS.py -s coreg_stack/slcs_base.vrt -d adjusted_wrapped_DS \
+                 -t Sequential/Datum_connection/EVD/tcorr.bin \
+                 -p ampDispersion/ps_pixels 
+                 -o PS_DS --stamps
+```  
 
 ### GenerateIgram and run files
 modified path parameter in generateIgram.py (or run by default)
 
-Running `generateIgram.py` and three run files, `run_geneateIgram.sh`, `run_estCoherence.sh` and `run_unwrap.sh` is created. 
+`./generateIgram.py` and three run files, `run_geneateIgram.sh`, `run_estCoherence.sh` and `run_unwrap.sh` is created. 
 
 Run them respectively.
 
 ### mintpy 
 assign the path of unwrap image, coherence, connect component to the path we just genreate in smallbaselineApp.cfg.
-Run `smallbaselineApp.py` 
+Run `smallbaselineApp.py smallbaselineApp.cfg` 
+
+## FRInGE SBAS mode
+Here I made some modification to the sbas code to Network.py for ISCE baseline input. 
+
+```bash
+./integratePS.py -s coreg_stack/slcs_base.vrt -d adjusted_wrapped_DS/ \
+                 -t Sequential/Datum_connection/EVD/tcorr.bin \
+                 -p ampDispersion/ps_pixels -b ../baselines \
+                 -o PS_DS --sbas -u snaphu
+```
+*But the workfllow is not yet tested.*
 
 
-
-**my contact: timjunyanchen@gmail.com**
+#### contact info
+email: timjunyanchen@gmail.com**

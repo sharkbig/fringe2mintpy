@@ -14,9 +14,13 @@ class Network(object):
         refdate=bptxt[0][:8]
         self.baselineDict[refdate]=0
         for i in bptxt:
-            f_bp=os.path.join(baselines,i)
+            f_bp=os.path.join(baselines,i,i+'.txt')
             secdate=i[9:17]
-            bp=np.loadtxt(f_bp,usecols=[1])
+            bp=[]
+            with open(f_bp) as f:
+                for ln in  f.readlines():
+                    if "Bperp (average)" in ln: 
+                        bp.append(float(ln.split(':')[1]))
             self.baselineDict[secdate]=np.average(bp)
         return None 
     

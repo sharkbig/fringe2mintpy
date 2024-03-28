@@ -47,11 +47,22 @@ def cmdLineParser(iargs = None):
 
     parser.add_argument('-x', '--xml_file', type=str, dest='xmlFile',
             required=False, help='path of reference xml file for unwrapping with snaphu')
+    
+    ## simple single reference mode 
     parser.add_argument('-m','--unwrap_reference', dest='mstDate',type=str)
+
+    ## slc ouput 
     parser.add_argument('--stamps',dest='stamps',action='store_true')
+
+    ## sbas mode
     parser.add_argument('--sbas',dest='sbas',action='store_true')
     parser.add_argument('-b', '--bperp',type=str,dest='bperp',
             help='The directory that contain the baseline file')
+    parser.add_argument('-tt','--t_thres',type=int, dest='t_thres', default=60,
+                        help='sbas temporal baselines threshold, default=60')
+    parser.add_argument('-bt','--bp_thres',type=int, dest='bp_thres', default=100,
+                        help='sbas baselines threshold, default=100')
+    
     return parser.parse_args()
 
 def rewrap(data):
@@ -318,19 +329,17 @@ def main(iargs=None):
         '''
         if inps.sbas:
             networkObj.Baselines_from_txt(inps.bperp)
-            networkObj.small_baseline()    
+            networkObj.small_baseline(timeThreshold=inps.t_thres, baselineThreshold=inps.bp_thres)    
         else:
             if inps.mstDate:
                 masterIx=dateList.index(inps.mstDate)
             else:
                 masterIx=0
             networkObj.single_master(masterIx)
-
         for pair in networkObj.pairsDates:
             print(pair)
         print(len(networkObj.pairsDates))
         export_singleMst_PSDS(networkObj,dateList,inps,ncols,nrows,dsSlc,dsTcor,psDataset,nblocks,linesPerBlock)
-    
     
 
     # write the unwrapping command for this pair

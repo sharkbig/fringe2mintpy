@@ -28,8 +28,10 @@ In fringe workflow, instead of running script in the original repo, I modified t
 
 ### GenerateIgram and run files
 modified path parameter in generateIgram.py (or run by default)
-Running `generateIgram.py`
-Three run files, `run_geneateIgram.sh`, `run_estCoherence.sh` and `run_unwrap.sh` is created, and run them respectively.
+
+Running `generateIgram.py` and three run files, `run_geneateIgram.sh`, `run_estCoherence.sh` and `run_unwrap.sh` is created. 
+
+Run them respectively.
 
 ### mintpy 
 assign the path of unwrap image, coherence, connect component to the path we just genreate in smallbaselineApp.cfg.
